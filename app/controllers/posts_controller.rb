@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-
+  skip_before_action :authenticate_user!
   before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -16,7 +16,6 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-
     if @post.save
       redirect_to @post, notice: "The post was created!"
     else
@@ -34,6 +33,11 @@ class PostsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @post.destroy
+    redirect_to root_path, notice: "Post destroyed :("
   end
 
   private
