@@ -1,4 +1,6 @@
 <% @posts.each do |post| %>
-     <h1><%= link_to "post.title", post %></h1>
+      <h1><%= post.category.name %></h1>
+     <h1><%= link_to post.title, post %></h1>
      <p><%= post.content %></p>
 <% end %>
+<%= link_to "Create a new post", new_post_path%>
