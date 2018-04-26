@@ -1,15 +1,28 @@
 .banner {
   position: relative;
   margin: 0;
-  background-image: linear-gradient(-180deg, rgba(234, 82, 111, 0.33) 7%, rgba(244, 244, 244, 0.23) 38% ), url('<%= asset_path("index-banner.jpg") %>');
+  background-image: linear-gradient(-180deg, rgba(0,0,0, 0.38) 7%, rgba(0,0,0, 0.38) 38% ), url('<%= asset_path("index-banner.jpg") %>');
   background-size: cover !important;
   background-position: top;
   text-align:center;
   color: white;
   text-align: center;
-  height: 70vh;
+  height: 75vh;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  h1 {
+  background-color: rgba(230, 14, 18, 0.6);
+  width: 100%;
+  padding: 5px;
+  margin-top: 100px;
+  }
+
+  #wakeup {
+    position: absolute;
+    left: 20px;
+    top: 100px;
+  }
 }
