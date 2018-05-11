@@ -1,5 +1,5 @@
 .footer {
-  background: #F4F4F4;
+  background: #6BDAF5;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -7,6 +7,15 @@
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
 }
+
+@media only screen and (max-device-width: 480px) {
+  .footer {
+    display: none;
+  }
+}
+
+
+
 .footer-links {
   display: flex;
   align-items: center;
