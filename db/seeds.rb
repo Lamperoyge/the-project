@@ -19,6 +19,7 @@ puts 'Creating fake posts'
     title: Faker::RickAndMorty.character,
     content: Faker::StarWars.quote,
     category: Category.all.sample
+    photo: "https://picsum.photos/200/300/?random"
     )
 end
 puts 'Finished'
