@@ -5,6 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+
 Category.create(name: "bitcoin")
 Category.create(name: "ether")
-Category.create(name: "test43")
+Category.create(name: "fintech")
+
+puts 'Creating fake posts'
+
+100.times do
+  post = Post.create(
+    title: Faker::RickAndMorty.character,
+    content: Faker::StarWars.quote,
+    category: Category.all.sample
+    )
+end
+puts 'Finished'

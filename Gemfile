@@ -10,7 +10,7 @@ gem 'puma'
 gem 'rails', '5.1.4'
 gem 'redis'
 gem 'carrierwave', '~> 1.2'
-
+gem 'faker'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'font-awesome-sass', '~> 4.7'

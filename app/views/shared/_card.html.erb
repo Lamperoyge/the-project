@@ -5,7 +5,9 @@
       </div>
       <div class="card-description">
         <h2><%= p.title %></h2>
-        <p><%= p.content %></p>
+        <% card_content = p.content.split.first(15).join(" ") %>
+        <p><%= card_content%>...</p>
+        <p>Click to continue reading</p>
       </div>
       <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
     </div>
