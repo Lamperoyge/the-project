@@ -1,9 +1,11 @@
-<%= form_for(@post) do |f| %>
+<%= simple_form_for(@post) do |f| %>
  <%= f.collection_select(:category_id, Category.all, :id, :name, {prompt: "Choose a category" }) %><br>
  <%= f.label :title %><br>
  <%= f.text_field :title, placeholder: "Type the post title here" %><br>
  <%= f.label :content %><br>
  <%= f.text_area :content, placeholder: "Type the post text here" %><br>
+ <%= f.input :photo %>
+ <%= f.input :photo_cache, as: :hidden %><br>
 <%= f.submit %>
 <% end %>
 
