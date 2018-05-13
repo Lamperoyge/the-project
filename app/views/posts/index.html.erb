@@ -4,3 +4,11 @@
      <p><%= post.content %></p>
 <% end %>
 <%= link_to "Create a new post", new_post_path%>
+
+<div class="show-container">
+  <div class="row">
+      <% @posts.each do |p| %>
+        <%= render './shared/card', p: p %>
+      <% end %>
+  </div>
+</div>
