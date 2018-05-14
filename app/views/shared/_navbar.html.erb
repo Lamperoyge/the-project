@@ -39,7 +39,8 @@
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link login-red" %>
+      <a class="navbar-wagon-item navbar-wagon-link" data-toggle="modal" data-target="#upModal">Sign up</a>
+      <a class="navbar-wagon-item navbar-wagon-link" data-toggle="modal" data-target="#myModal" id="login-btn">Login</a>
     <% end %>
   </div>
 
@@ -52,6 +53,91 @@
         <li><a href="#">Other one</a></li>
         <li><a href="#">Other one</a></li>
       </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <div class="modal-body">
+              <h2>Log in</h2>
+
+              <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="form-inputs">
+                  <%= f.input :email, required: false, autofocus: true %>
+                  <%= f.input :password, required: false %>
+                  <div class="remember-me">
+
+                  <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+                </div>
+
+                <div class="form-actions">
+                  <%= f.button :submit, "Log in" %>
+                </div>
+              </div>
+              <hr>
+              <% end %>
+                <hr>
+              <% if devise_mapping.registerable? && controller_name != 'registrations' %>
+                <div class="sign-up-link">
+                <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+                </div>
+
+              <% end %>
+              <%= render "devise/shared/links" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="upModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <div class="modal-body">
+
+              <h2>Sign up</h2>
+
+              <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <%= f.error_notification %>
+
+                <div class="form-inputs">
+                  <%= f.input :email, required: true, autofocus: true %>
+                  <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+                  <%= f.input :password_confirmation, required: true %>
+                </div>
+
+                <div class="form-actions", style="margin-bottom: 20px;">
+                  <%= f.button :submit, "Sign up" %>
+                </div>
+                <% end %>
+                <hr>
+              <hr>
+              <%= render "devise/shared/links" %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
