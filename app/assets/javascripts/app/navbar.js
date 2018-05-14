@@ -1,13 +1,15 @@
 const myNav = document.querySelector(".navbar-wagon");
+const myBody = document.querySelector("body");
 window.onscroll = function () {
   "use strict";
-  if (document.body.scrollTop >= 900) {
-    myNav.classList.add("nav-colored");
-    myNav.classList.remove("nav-not");
+  if ((myNav.offsetTop - myBody.scrollTop) >= 900) {
+    myNav.style.backgroundColor = "black";
+    // myNav.classList.remove("nav-not");
   }
   else {
-    myNav.classList.add("nav-not");
-    myNav.classList.remove("nav-colored");
+    // myNav.classList.add("nav-not");
+    // myNav.classList.remove("nav-colored");
+    myNav.style.backgroundColor = "white";
   }
 };
 
