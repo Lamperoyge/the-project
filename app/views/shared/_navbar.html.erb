@@ -39,7 +39,7 @@
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
-      <a class="navbar-wagon-item navbar-wagon-link" data-toggle="modal" data-target="#upModal">Sign up</a>
+      <a class="navbar-wagon-item navbar-wagon-link login-red" data-toggle="modal" data-target="#upModal">Sign up</a>
       <a class="navbar-wagon-item navbar-wagon-link" data-toggle="modal" data-target="#myModal" id="login-btn">Login</a>
     <% end %>
   </div>
@@ -123,6 +123,7 @@
 
                 <div class="form-inputs">
                   <%= f.input :email, required: true, autofocus: true %>
+                  <%= f.input :phone_number, required: true, autofocus: true %>
                   <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
                   <%= f.input :password_confirmation, required: true %>
                 </div>
