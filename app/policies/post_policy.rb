@@ -4,14 +4,13 @@ class PostPolicy < ApplicationPolicy
   #     scope
   #   end
   # end
+  def initialize(user, post)
+    @user = record.user
+    @post = post
+  end
 
-
-  def create?
-    if record.user == user && user.admin?
-      true
-  else
-      false
-    end
+  def create?(user)
+    reocrd.user == @user
   end
 
   def update?
