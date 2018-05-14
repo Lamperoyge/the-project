@@ -1,21 +1,5 @@
-const myNav = document.querySelector(".navbar-wagon");
-const myBody = document.querySelector("body");
-window.onscroll = function () {
-  "use strict";
-  if ((myNav.offsetTop - myBody.scrollTop) >= 900) {
-    myNav.style.backgroundColor = "black";
-    // myNav.classList.remove("nav-not");
-  }
-  else {
-    // myNav.classList.add("nav-not");
-    // myNav.classList.remove("nav-colored");
-    myNav.style.backgroundColor = "white";
-  }
-};
-
-
 const nav = document.querySelector(".navbar-wagon");
-const navTop = nav.offsetTop;
+const navTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
 window.addEventListener('scroll', stickyNavigation);
 
@@ -27,6 +11,24 @@ function stickyNavigation () {
     document.body.classList.remove('fixed-nav');
   }
 
-  // console.log('navTop = ' + navTop);
-  // console.log('scrollY =' + window.scrollY);
+  console.log(`navTop = ${navTop}`);
+  console.log(`scrollY = ${window.scrollY}`);
 };
+
+
+const myNav = document.querySelector(".login-red");
+const myBody = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+window.onscroll = function () {
+  "use strict";
+  if (window.scrollY  >= 100) {
+    myNav.classList.add("nav-h1");
+    myNav.classList.remove("nav-not-h1");
+  }
+  else {
+    myNav.classList.add("nav-not-h1");
+    myNav.classList.remove("nav-h1");
+    myNav.style.backgroundColor = "white";
+  }
+};
+
+

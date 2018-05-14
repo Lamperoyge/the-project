@@ -7,13 +7,31 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: white;
 }
 
-.fixed-nav nav {
+
+
+.nav-h1 {
+  border: 1px solid #E60E12;
+  padding: 10px 15px;
+  border-radius: 50px;
+  font-weight: lighter;
+  transition: all 0.3s ease;
+}
+
+
+.nav-not-h1 {
+
+
+}
+.fixed-nav {
+  .navbar-wagon {
   position: fixed;
   top:0;
   z-index: 1;
-
+  width: 100%;
+  }
 }
 .nav-colored {
   background: #E60E12;
