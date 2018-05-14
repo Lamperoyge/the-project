@@ -25,6 +25,21 @@
 
 
 }
+
+
+.form-actions {
+  .btn {
+    color: black;
+    border: 1px solid rgba(124, 248, 182, 0.8);
+    padding: 10px 15px;
+    border-radius: 50px;
+    font-weight: lighter;
+    background-color: transparent;
+    &:hover {
+      background-color: rgba(124, 248, 182, 1);
+    }
+  }
+}
 .fixed-nav {
   .navbar-wagon {
   position: fixed;
