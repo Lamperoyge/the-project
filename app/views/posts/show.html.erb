@@ -1,5 +1,9 @@
-<h1><%= @post.title %></h1>
-<p><%= @post.content %></p>
+<div class="wrapper">
+  <div class="show-container">
+    <h1><%= @post.title %></h1>
+    <p><%= @post.content %></p>
+  </div>
+</div>
 <%= cl_image_tag @post.photo, height: 300, width: 400, crop: :fill %>
 <%= link_to "Edit", edit_post_path(@post) %>
 <%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" }%>

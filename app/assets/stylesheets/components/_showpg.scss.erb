@@ -1,0 +1,33 @@
+.show-container {
+  margin-left: 20%;
+  margin-right: 20%;
+  background-color: white;
+  box-shadow: 4px 4px 34px -10px rgba(0,0,0,0.75);
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  height: 100vh;
+  text-align: center;
+  h1 {
+  margin-bottom: 15%;
+  }
+}
+
+@media only screen and (max-device-width: 480px) {
+  .show-container {
+    margin: 0px;
+    padding-top: 30px;
+    h1 {
+      padding: 20px;
+      margin-bottom: 0px;
+    }
+  }
+}
+
+
+.wrapper {
+  background-color: #E9E5E5;
+  background: url('<%= asset_path("graph.png") %>');
+  background-size: cover;
+  background-position: center;
+}
