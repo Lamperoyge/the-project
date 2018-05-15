@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   get "/about", to: "pages#about"
   get "/contact", to: "pages#contact"
   get "/home", to: "pages#home"
-
+  get "/admin", to: "posts#admin"
   resources :posts
 end

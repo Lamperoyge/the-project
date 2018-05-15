@@ -5,5 +5,7 @@
         <%= render './shared/card', p: p %>
       <% end %>
   </div>
-  <%= link_to "Create a new post", new_post_path%>
+  <% if session[:admin] then %>
+    <%= link_to "Create a new post", new_post_path%>
+  <% end %>
 </div>
