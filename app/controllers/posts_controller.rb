@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   skip_before_action :authenticate_user!
+  before_action :authenticate, only: [:admin, :new, :create, :edit, :update, :destroy]
   before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -32,6 +33,12 @@ class PostsController < ApplicationController
 
   end
 
+
+  def admin
+    redirect_to root_path if authenticate
+  end
+
+
   def update
     if @post.update(post_params)
       redirect_to @post, notice: "The post was updated successfully!"
@@ -47,10 +54,19 @@ class PostsController < ApplicationController
 
   private
 
+
+
   def post_params
    params.require(:post).permit(:title, :content, :category_id, :photo)
   end
 
+  def authenticate
+    authenticate_or_request_with_http_basic do |username, password|
+     admin_username = Rails.application.secrets.admin_username
+     admin_password = Rails.application.secrets.admin_password
+     session[:admin] = true if (username == admin_username && password == admin_password)
+    end
+  end
   def find_post
      @post = Post.find(params[:id])
   end
