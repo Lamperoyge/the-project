@@ -18,7 +18,8 @@ puts 'Creating fake posts'
   post = Post.create(
     title: Faker::RickAndMorty.character,
     content: Faker::StarWars.quote,
-    category: Category.all.sample
+    category: Category.all.sample,
+    user: User.first
     )
 end
 puts 'Finished'

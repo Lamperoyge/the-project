@@ -18,10 +18,12 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    authorize @post
   end
 
   def create
     @post = Post.new(post_params)
+    authorize @post
     if @post.save
       redirect_to @post, notice: "The post was created!"
     else
@@ -30,7 +32,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-
+    authorize @post
   end
 
 
@@ -40,6 +42,7 @@ class PostsController < ApplicationController
 
 
   def update
+    authorize @post
     if @post.update(post_params)
       redirect_to @post, notice: "The post was updated successfully!"
     else
@@ -48,6 +51,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    authorize @post
     @post.destroy
     redirect_to posts_path, notice: "Post destroyed :("
   end
@@ -57,7 +61,7 @@ class PostsController < ApplicationController
 
 
   def post_params
-   params.require(:post).permit(:title, :content, :category_id, :photo)
+   params.require(:post).permit(:title, :content, :category_id, :photo, :user_id)
   end
 
   def authenticate
