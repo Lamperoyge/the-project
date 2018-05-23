@@ -1,7 +1,8 @@
+require 'pry-byebug'
 class ReviewsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
-    @review = Review.new(review_params)
+    @review = current_user.reviews.new(review_params)
     @review.post = @post
     if @review.save
       respond_to do |format|
@@ -19,6 +20,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:content)
+    params.require(:review).permit(:content, :user_id)
   end
 end
