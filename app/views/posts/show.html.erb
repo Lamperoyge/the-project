@@ -4,9 +4,21 @@
     <p><%= @post.content %></p>
   </div>
 </div>
-<%= cl_image_tag @post.photo, height: 300, width: 400, crop: :fill %>
+<div id="reviews">
+  <% if @post.reviews.blank? %>
+    Be the first to leave a review>
+  <% else %>
+    <% @post.reviews.each do |review| %>
+      <p><%= review.content %></p>
+    <% end %>
+  <% end %>
+</div>
 
-<% if current_user == @post.user %>
+<%= render 'reviews/form', restaurant: @post, review: @review %>
+
+
+<%= cl_image_tag @post.photo, height: 300, width: 400, crop: :fill %>
+<% if current_user.admin == true %>
   <%= link_to "Edit", edit_post_path(@post) %>
   <%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" }%>
 <% end %>

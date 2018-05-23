@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   get "/contact", to: "pages#contact"
   get "/home", to: "pages#home"
   get "/admin", to: "posts#admin"
-  resources :posts
+  resources :posts do
+    resources :reviews, only: :create
+  end
 end
