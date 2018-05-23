@@ -4,6 +4,15 @@
     <p><%= @post.content %></p>
   </div>
 </div>
+<div id="reviews">
+  <% if @post.reviews.blank? %>
+    Be the first to leave a review>
+  <% else %>
+    <% @post.reviews.each do |review| %>
+      <%= render 'reviews/show', review: review %>
+    <% end %>
+  <% end %>
+</div>
 
 <%= render 'reviews/form', restaurant: @post, review: @review %>
 
