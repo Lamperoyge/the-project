@@ -9,6 +9,7 @@
     Be the first to leave a review>
   <% else %>
     <% @post.reviews.each do |review| %>
+      <p><%= review.user.first_name %> <%= review.user.last_name %></p>
       <p><%= review.content %></p>
     <% end %>
   <% end %>
