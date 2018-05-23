@@ -1,5 +1,6 @@
+require 'pry-byebug'
 class PostsController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -12,7 +13,7 @@ class PostsController < ApplicationController
   end
 
   def show
-
+    @review = Review.new
   end
 
   def new
@@ -26,6 +27,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post, notice: "The post was created!"
     else
+      # binding.pry
       render 'new'
     end
   end
@@ -54,7 +56,7 @@ class PostsController < ApplicationController
 
 
   def post_params
-   params.require(:post).permit(:title, :content, :category_id, :photo, :user_id)
+   params.require(:post).permit(:title, :content, :category_id, :photo, :photo_cache, :user_id)
   end
 
   def find_post
