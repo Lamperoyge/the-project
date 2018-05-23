@@ -22,12 +22,11 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
     authorize @post
     if @post.save
       redirect_to @post, notice: "The post was created!"
     else
-      # binding.pry
       render 'new'
     end
   end
