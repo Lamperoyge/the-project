@@ -7,9 +7,6 @@
     <%= cl_image_tag @post.photo, class: "graph", height: 500 %>
   <%= render 'reviews/form', restaurant: @post, review: @review %>
     <div id="reviews">
-      <% if @post.reviews.blank? %>
-        Be the first to leave a review>
-      <% else %>
         <% @post.reviews.each do |review| %>
           <div class="created-by">
           <p id="review_user" style="font-weight: bold"><%= review.user.first_name %> <%= review.user.last_name %></p><p style="font-weight: lighter; font-size: 10px; font-style: oblique;">posted <%=distance_of_time_in_words(from_time, review.created_at) %> ago</p>
