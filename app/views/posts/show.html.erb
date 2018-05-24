@@ -7,13 +7,12 @@
     <%= cl_image_tag @post.photo, class: "graph", height: 500 %>
   <%= render 'reviews/form', restaurant: @post, review: @review %>
     <div id="reviews">
-        <% @post.reviews.each do |review| %>
-          <div class="created-by">
+      <% @post.reviews.each do |review| %>
+        <div class="created-by">
           <p id="review_user" style="font-weight: bold"><%= review.user.first_name %> <%= review.user.last_name %></p><p style="font-weight: lighter; font-size: 10px; font-style: oblique;">posted <%=distance_of_time_in_words(from_time, review.created_at) %> ago</p>
           </div>
-          <p id="review_body"><%= review.content %></p>
-          <hr style="width: 100%;opacity: 0.1;border-top: 1px solid black;">
-        <% end %>
+        <p id="review_body"><%= review.content %></p>
+        <hr style="width: 100%;opacity: 0.1;border-top: 1px solid black;">
       <% end %>
     </div>
   </div>
