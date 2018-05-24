@@ -1,4 +1,12 @@
-<%= simple_form_for([ @post, review ], remote: true) do |form| %>
-  <%= form.input :content, as: :text %>
-  <%= form.button :submit %>
+<%= simple_form_for([ @post, review ], remote: true) do |f| %>
+  <div class="form_container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-lg-12" style="width: 100%";>
+        <%= f.input :content, as: :text %>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-lg-12" style="margin-bottom: 10px;">
+        <%= f.button :submit, class: "btn-light" %>
+      </div>
+    </div>
+  </div>
 <% end %>
