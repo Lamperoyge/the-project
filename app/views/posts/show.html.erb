@@ -1,24 +1,29 @@
+<% from_time = Time.now %>
+
 <div class="wrapper">
   <div class="show-container">
     <h1><%= @post.title %></h1>
     <p><%= @post.content %></p>
+    <%= cl_image_tag @post.photo, class: "graph", height: 500 %>
+  <%= render 'reviews/form', restaurant: @post, review: @review %>
+    <div id="reviews">
+      <% if @post.reviews.blank? %>
+        Be the first to leave a review>
+      <% else %>
+        <% @post.reviews.each do |review| %>
+          <div class="created-by">
+          <p id="review_user" style="font-weight: bold"><%= review.user.first_name %> <%= review.user.last_name %></p><p style="font-weight: lighter; font-size: 10px; font-style: oblique;">posted <%=distance_of_time_in_words(from_time, review.created_at) %> ago</p>
+          </div>
+          <p id="review_body"><%= review.content %></p>
+          <hr style="width: 100%;opacity: 0.1;border-top: 1px solid black;">
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
-<div id="reviews">
-  <% if @post.reviews.blank? %>
-    Be the first to leave a review>
-  <% else %>
-    <% @post.reviews.each do |review| %>
-      <p><%= review.user.first_name %> <%= review.user.last_name %></p>
-      <p><%= review.content %></p>
-    <% end %>
-  <% end %>
-</div>
-
-<%= render 'reviews/form', restaurant: @post, review: @review %>
 
 
-<%= cl_image_tag @post.photo, height: 300, width: 400, crop: :fill %>
+
 <% if current_user.admin == true %>
   <%= link_to "Edit", edit_post_path(@post) %>
   <%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" }%>
