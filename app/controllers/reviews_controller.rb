@@ -1,4 +1,4 @@
-require 'pry-byebug'
+
 class ReviewsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
